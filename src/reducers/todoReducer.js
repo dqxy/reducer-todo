@@ -14,11 +14,12 @@ export const todoReducer = (state,action) => {
               {...item, completed: !item.completed} : 
               {...item}))];
       case "ADD_ITEM":
+          if(action.payload){
           return [...state, {
               item: action.payload,
               completed: false,
               id: new Date()
-          }];
+          }];} else return [...state];
       case "CLEAR_DONE":
           return state.filter(item=>!(item.completed));
       default:
